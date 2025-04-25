@@ -27,9 +27,21 @@ engine = create_engine(config.uri_postgres(), echo=True)
 Session = sessionmaker(bind=engine)
 
 
+# Декларація базового класу для моделей, Необхідно для реалізації відношень у ORM
 class Base(DeclarativeBase):
     def create_db(self):
+        """
+            Ініціалізація метаданих,
+            створює базу даних, якщо відсутня,
+            створює таблиці на основі моделей(що спадкуються від Base),
+            якщо жодної немає
+        """  
         self.metadata.create_all(engine)
 
     def drop_db(self):
+        """
+            Деструкція метаданих,
+            видаляє базу даних, якщо така наявна,
+            видаляє усі таблиці
+        """
         self.metadata.drop_all(engine)

@@ -23,3 +23,9 @@ python3 pg_create_database.py
 ```
 python3 sqlite_create_database.py
 ```
+
+## Необхідні бібліотеки:
+ - Flask
+ - Flask-SQLAlchemy
+
+`pip install flask flask-sqlalchemy python-dotenv`
