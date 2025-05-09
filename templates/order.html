@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %} {{product.name}} {% endblock %}
+
+
+{% block content %}
+    <div class="container-fluid">
+        <img src="/static/images/{{product.image_filename}}" width="540">
+        <h3>{{product.name}}</h3>
+        <p>{{product.price}}₴</p>
+        <div>{{product.description}}</div>
+    </div>
+
+    <h4>Для замовлення.</h4>
+    <div class="container">
+        <form method="post" action="{{ url_for('order', product_id=product.id) }}">
+            <p>Ваш номер телефону:</p>
+            <input type="text" name="phone">
+            
+            <p>Адрес електроної скриньки:</p>
+            <input type="text" name="email">
+            <input type="submit" value="Замовити">
+        </form>
+    <div>
+    <p>*Після оформлення замовлення з вами зв'яжеться консультант</p>
+
+{% endblock %}

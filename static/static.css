@@ -1,0 +1,7 @@
+.flashes {
+    background-color: yellow;
+    color: red;              /* Правильное свойство для цвета текста */
+    font-weight: bold;       /* Если хочешь "широкий" или жирный текст */
+    font-size: 20px;         /* Если имелось в виду размер текста */
+    text-align: center;
+}

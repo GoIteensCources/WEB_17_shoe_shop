@@ -7,13 +7,20 @@
         rel="stylesheet" 
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" 
         crossorigin="anonymous">
+    <title>{% block title %}Shoes store{% endblock title %}</title>
 </head>
 
-<body>
-    <div class="container">        
-        <h1>Привіт, адаптивний дизайн!</h1>
-        <p>Спробуйте змінити розмір вікна</p>
-    </div>
+<body class="container">
+    <nav class="mt-4">
+        <a href="{{url_for('index')}}" class="btn btn-outline-primary btn-lg">STORE</a>
+        <a href="{{url_for('products')}}" class="btn btn-outline-primary btn-lg">Сторінка товарів</a>
+    </nav>
+
+    {% include "components/flash_message.html" %}
+    
+
+    {% block content %}
+    {% endblock %}
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 

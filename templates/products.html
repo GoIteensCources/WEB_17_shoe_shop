@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %} Products shoes {% endblock %}
+
+
+{% block content %}
+    <h1>Усі наявні товари</h1>
+
+{%for product in products%}
+    <div class="container">
+        <img src="/static/images/{{product.image_filename}}" width="300">
+        <h3>{{product.name}}</h3>
+        <p>{{product.price}}₴</p>
+        <a href="{{ url_for('order', product_id=product.id) }}" class="btn btn-primary">Купити</a>
+
+    </div>
+{%endfor%}
+
+{% endblock %}
+
