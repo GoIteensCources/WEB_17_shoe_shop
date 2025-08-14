@@ -55,6 +55,23 @@ def order(product_id):
         )  # Передаємо данні про товар разом з html-файлом
 
 
+@app.route("/search", methods=["POST", "GET"])
+def search():
+    query = request.args.get("search")
+    
+    if request.method == "POST":
+        query = request.form.get("search")
+    
+    if not query:
+        flash("Будь ласка, введіть пошуковий запит.")
+        return redirect(url_for("index"))
+
+    with Session() as session:
+        stmt = select(Product).where(Product.name.like(f"%{query}%")) # "SELECT * FROM products where name LIKE '%query%'" 
+        products: Sequence[Product]|None = session.scalars(stmt).all()
+    return render_template("products.html", products=products)
+
+
 if __name__ == "__main__":
     print(app.url_map)
     app.run(debug=True, port=5050)
